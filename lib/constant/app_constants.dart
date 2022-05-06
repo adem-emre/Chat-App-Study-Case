@@ -8,5 +8,5 @@ class AppConstants{
   static const String callsTab = "Calls";
   static const String messagesTab = "Messages";
   static const String directoryTab = "Directory";
-
+  static const String yourMessage = "Your Message";
 }
