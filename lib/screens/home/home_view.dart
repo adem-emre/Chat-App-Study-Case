@@ -1,6 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:study_case/constant/app_colors.dart';
+import 'package:study_case/constant/app_constants.dart';
 import 'package:study_case/screens/messages/messages_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -17,17 +18,19 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_selectedIndex],
+      floatingActionButton: _selectedIndex == 1 ? _floatingActionButton() : null,
       bottomNavigationBar: BottomNavyBar(
+        selectedIndex: _selectedIndex,
           items: [
             BottomNavyBarItem(
               activeColor: AppColors.primaryColor,
-                icon: Icon(Icons.phone), title: const Text("Calls")),
+                icon: const Icon(Icons.phone), title: const Text(AppConstants.callsTab)),
             BottomNavyBarItem(
               activeColor: AppColors.primaryColor,
-                icon: Icon(Icons.message), title: const Text("Messages")),
+                icon: const Icon(Icons.message), title: const Text(AppConstants.messagesTab)),
             BottomNavyBarItem(
               activeColor: AppColors.primaryColor,
-                icon: Icon(Icons.person), title: const Text("Directory")),
+                icon: const Icon(Icons.person), title: const Text(AppConstants.directoryTab)),
           ],
           onItemSelected: (index) {
             setState(() {
@@ -35,5 +38,16 @@ class _HomeViewState extends State<HomeView> {
             });
           }),
     );
+  }
+  FloatingActionButton _floatingActionButton() {
+    return FloatingActionButton(
+        backgroundColor: AppColors.primaryColor,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+                bottomRight: Radius.circular(30))),
+        child: const Icon(Icons.edit),
+        onPressed: () {});
   }
 }
