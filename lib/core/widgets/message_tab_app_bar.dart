@@ -15,7 +15,7 @@ class MessageTabAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      height: context.setScaledHeight(0.24),
+      height: context.setScaledHeight(0.22),
       decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
         AppColors.gradientMessageHeaderColor1,
@@ -25,7 +25,7 @@ class MessageTabAppBar extends StatelessWidget {
       ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 9),
+          padding: const EdgeInsets.only(top: 24,bottom: 9),
           child: Text(
             AppConstants.appName,
             style: GoogleFonts.lexendDeca(
