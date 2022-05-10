@@ -18,6 +18,13 @@ dependencies:
   http: ^0.13.4
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
+  
+  faker:
+    git:
+      url: https://github.com/adem-emre/faker.git
+      ref: only-digits
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -85,6 +85,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  faker:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: only-digits
+      resolved-ref: e3e6487d1d54d0077c2244f090bd84764218946c
+      url: "https://github.com/adem-emre/faker.git"
+    source: git
+    version: "2.0.0"
   ffi:
     dependency: transitive
     description:

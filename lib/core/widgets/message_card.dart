@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:study_case/core/extensions/context_ext.dart';
 import 'package:study_case/models/user_model.dart';
-
+import 'package:faker/faker.dart';
 import '../../constant/app_colors.dart';
 
 class MessageCard extends StatelessWidget {
@@ -40,11 +40,11 @@ class MessageCard extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Text(
-                    "Lorem " * 8,
+                    faker.lorem.sentence(),
                     maxLines: 1,
                     style: const TextStyle(color: AppColors.secondaryTextColor),
                   ),
@@ -54,7 +54,7 @@ class MessageCard extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("12:45"),
+                Text(faker.date.justTime()),
                 if (user.dob?.age?.isOdd ?? false) ...[_messageCount()]
               ],
             ),
