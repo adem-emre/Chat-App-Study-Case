@@ -1,29 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_case/constant/app_colors.dart';
 import 'package:study_case/constant/app_constants.dart';
 import 'package:study_case/core/extensions/context_ext.dart';
 import 'package:study_case/core/widgets/custom_text_field.dart';
+import 'package:study_case/cubit/chat_cubit.dart';
+import 'package:study_case/models/message_model.dart';
 
 import '../../core/widgets/chat_action_button.dart';
 import '../../core/widgets/chat_header.dart';
+import '../../core/widgets/chat_message_box.dart';
 
 class ChatView extends StatelessWidget {
   ChatView({Key? key}) : super(key: key);
   final footerItemPadding = const EdgeInsets.symmetric(horizontal: 9);
-  final List<bool> messages = [
-    false,
-    false,
-    true,
-    false,
-    true,
-    true,
-    false,
-    false,
-    true,
-    false,
-    true,
-    true
-  ];
+  final int extraScrollValue = 60;
+  final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,40 +24,20 @@ class ChatView extends StatelessWidget {
         backgroundColor: AppColors.chatBgColor,
         body: Column(
           children: [
-            ChatHeader(),
-            Expanded(
-                child: ListView.builder(
-                    itemCount: messages.length,
+            ChatHeader(
+                selectedUser: context.read<ChatCubit>().state.selectedUser!),
+            Expanded(child: BlocBuilder<ChatCubit, ChatState>(
+              builder: (context, state) {
+                return ListView.builder(
+                  controller: _scrollController,
+                    itemCount: state.chatMessages.length,
                     itemBuilder: (context, index) {
-                      return Align(
-                        alignment: messages[index]
-                            ? Alignment.centerRight
-                            : Alignment.centerLeft,
-                        child: Container(
-                          margin: const EdgeInsets.fromLTRB(15, 9, 15, 0),
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: messages[index]
-                                  ? Radius.circular(18)
-                                  : Radius.zero,
-                              topRight: messages[index]
-                                  ? Radius.zero
-                                  : Radius.circular(18),
-                              bottomLeft: Radius.circular(18),
-                              bottomRight: Radius.circular(18),
-                            ),
-                            color: messages[index]
-                                ? AppColors.myMessageColor
-                                : AppColors.friendMessageColor,
-                          ),
-                          child: Text(
-                            "lorem ipsum " * (index + 1),
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
+                      return ChatMessageBox(
+                        message: state.chatMessages[index],
                       );
-                    })),
+                    });
+              },
+            )),
             Container(
               color: Colors.white,
               height: context.setScaledHeight(0.15),
@@ -78,12 +51,27 @@ class ChatView extends StatelessWidget {
                       color: AppColors.primaryColor,
                     )),
                   ),
-                  const Expanded(
+                  Expanded(
                     child: CustomTextField(
+                        controller:
+                            context.read<ChatCubit>().textEditingController,
                         hintText: AppConstants.yourMessage,
-                        suffix: Icon(
-                          Icons.send,
-                          color: AppColors.primaryColor,
+                        suffix: IconButton(
+                          onPressed: () {
+                            context.read<ChatCubit>().sendMessage(Message(
+                                message: context
+                                    .read<ChatCubit>()
+                                    .textEditingController
+                                    .text
+                                    .trim(),
+                                isFromMe: true));
+                             _scrollController.jumpTo(_scrollController.position.maxScrollExtent+extraScrollValue);
+
+                          },
+                          icon: const Icon(
+                            Icons.send,
+                            color: AppColors.primaryColor,
+                          ),
                         )),
                   ),
                   Padding(

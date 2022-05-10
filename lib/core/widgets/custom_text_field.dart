@@ -6,15 +6,17 @@ import '../../constant/app_colors.dart';
 class CustomTextField extends StatelessWidget {
   final Widget? suffix;
   final String hintText;
+  final TextEditingController? controller;
   const CustomTextField({
     Key? key,
     this.suffix,
-    required this.hintText,
+    required this.hintText, this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
           suffixIcon: suffix,
           hintText: hintText,
