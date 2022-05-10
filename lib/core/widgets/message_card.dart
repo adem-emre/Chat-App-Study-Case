@@ -19,7 +19,7 @@ class MessageCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: context.setScaledHeight(0.18),
+        height: 112,
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 21),
         child: Row(
           children: [

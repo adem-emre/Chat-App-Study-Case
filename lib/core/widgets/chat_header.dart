@@ -18,7 +18,7 @@ class ChatHeader extends StatelessWidget {
     return Container(
       width: context.width,
       color: Colors.white,
-      height: context.setScaledHeight(0.15),
+      height: 100,
       child: Row(
         children: [
           IconButton(
