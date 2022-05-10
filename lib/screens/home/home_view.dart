@@ -13,24 +13,49 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 1;
-  List<Widget> pages = const [SizedBox(), MessagesView(), SizedBox()];
+  late List<Widget> pages;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    pages = [
+      Center(
+        child: Text(
+          AppConstants.callsTab,
+          style: Theme.of(context).textTheme.headline6,
+        ),
+      ),
+      const MessagesView(),
+      Center(
+        child: Text(
+          AppConstants.directoryTab,
+          style: Theme.of(context).textTheme.headline6,
+        ),
+      )
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_selectedIndex],
-      floatingActionButton: _selectedIndex == 1 ? _floatingActionButton() : null,
+      floatingActionButton:
+          _selectedIndex == 1 ? _floatingActionButton() : null,
       bottomNavigationBar: BottomNavyBar(
-        selectedIndex: _selectedIndex,
+          selectedIndex: _selectedIndex,
           items: [
             BottomNavyBarItem(
-              activeColor: AppColors.primaryColor,
-                icon: const Icon(Icons.phone), title: const Text(AppConstants.callsTab)),
+                activeColor: AppColors.primaryColor,
+                icon: const Icon(Icons.phone),
+                title: const Text(AppConstants.callsTab)),
             BottomNavyBarItem(
-              activeColor: AppColors.primaryColor,
-                icon: const Icon(Icons.message), title: const Text(AppConstants.messagesTab)),
+                activeColor: AppColors.primaryColor,
+                icon: const Icon(Icons.message),
+                title: const Text(AppConstants.messagesTab)),
             BottomNavyBarItem(
-              activeColor: AppColors.primaryColor,
-                icon: const Icon(Icons.person), title: const Text(AppConstants.directoryTab)),
+                activeColor: AppColors.primaryColor,
+                icon: const Icon(Icons.person),
+                title: const Text(AppConstants.directoryTab)),
           ],
           onItemSelected: (index) {
             setState(() {
@@ -39,6 +64,7 @@ class _HomeViewState extends State<HomeView> {
           }),
     );
   }
+
   FloatingActionButton _floatingActionButton() {
     return FloatingActionButton(
         backgroundColor: AppColors.primaryColor,
