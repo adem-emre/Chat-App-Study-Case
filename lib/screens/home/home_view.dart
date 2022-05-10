@@ -1,8 +1,8 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:study_case/constant/app_colors.dart';
-import 'package:study_case/constant/app_constants.dart';
-import 'package:study_case/screens/messages/messages_view.dart';
+import '../../constant/app_colors.dart';
+import '../../constant/app_constants.dart';
+import '../messages/messages_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:study_case/constant/app_colors.dart';
-import 'package:study_case/constant/app_constants.dart';
-import 'package:study_case/core/extensions/context_ext.dart';
-import 'package:study_case/core/widgets/custom_text_field.dart';
-import 'package:study_case/cubit/chat_cubit.dart';
-import 'package:study_case/models/message_model.dart';
+import '../../constant/app_colors.dart';
+import '../../constant/app_constants.dart';
+import '../../core/widgets/custom_text_field.dart';
+import '../../cubit/chat_cubit.dart';
+import '../../models/message_model.dart';
 
 import '../../core/widgets/chat_action_button.dart';
 import '../../core/widgets/chat_header.dart';

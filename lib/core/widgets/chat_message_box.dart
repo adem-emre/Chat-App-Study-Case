@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_case/models/message_model.dart';
+import '../../models/message_model.dart';
 
 import '../../constant/app_colors.dart';
 

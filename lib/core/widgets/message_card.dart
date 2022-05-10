@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:study_case/core/extensions/context_ext.dart';
-import 'package:study_case/models/user_model.dart';
+import '../../models/user_model.dart';
 import 'package:faker/faker.dart';
 import '../../constant/app_colors.dart';
 

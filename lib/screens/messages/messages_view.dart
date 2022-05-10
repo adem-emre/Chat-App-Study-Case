@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:study_case/cubit/users_cubit.dart';
-import 'package:study_case/screens/chat/chat_view.dart';
+import '../../cubit/users_cubit.dart';
+import '../chat/chat_view.dart';
 
-import '../../constant/app_colors.dart';
 import '../../core/widgets/archive_tile.dart';
 import '../../core/widgets/custom_divider.dart';
 import '../../core/widgets/message_card.dart';

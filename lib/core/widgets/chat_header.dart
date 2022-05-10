@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:study_case/core/extensions/context_ext.dart';
-import 'package:study_case/core/widgets/chat_action_button.dart';
-import 'package:study_case/models/user_model.dart';
+import '../extensions/context_ext.dart';
+import 'chat_action_button.dart';
+import '../../models/user_model.dart';
 
 import '../../constant/app_colors.dart';
 

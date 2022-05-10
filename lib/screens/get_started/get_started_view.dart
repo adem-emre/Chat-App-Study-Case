@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:study_case/screens/home/home_view.dart';
+import '../home/home_view.dart';
 import '../../constant/app_colors.dart';
 import '../../constant/app_constants.dart';
 import '../../core/extensions/context_ext.dart';
